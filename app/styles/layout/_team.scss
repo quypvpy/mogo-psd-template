@@ -1,0 +1,120 @@
+.team {
+    background-color: #fff;
+    padding: 10rem 0;
+    &-info {
+        padding: 3rem 1.5rem;
+        text-align: center;
+        height: calc(100% - 47rem);
+        @include flexbox(center, space-between, column);
+        // vì flex nên dù cái cao cái thấp.. nên nó vẫn canh item heght bằng nhâu..
+        // vì thế ta lấy chiều cao item - chiêu cao ảnh để ra đúng chiều cao 3 cái bằng nhâu.để áp dụng
+        // trick flex
+    }
+    &-image {
+        object-fit: cover;
+        @include size(100%, 47rem);
+        // để tránh ảnh cao
+    }
+    &-list {
+        // 3 khung có 2 khoảng trống.. cách nhau 30 thì tổng 60.. 60/3 =20
+        @include flexbox(stretch, space-between);
+    }
+    &-item {
+        width: calc(33.33% - 2rem);
+    }
+
+    &-main {
+        position: relative;
+        transition: all 0.25s linear;
+        &::after {
+            content: "";
+            @include absoluteFull();
+            background-color: $third-color;
+            z-index: -1;
+            transition: all 0.25s linear;
+        }
+    }
+    &-main:hover {
+        transform: translate(-1rem, -1rem);
+        &::after {
+            transform: translate(1rem, 1rem);
+        }
+        .team-content {
+            opacity: 0.6;
+            visibility: visible;
+        }
+    }
+    &-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8));
+        @include size(100%);
+        opacity: 0;
+        z-index: 22;
+        visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    &-name {
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        line-height: 1.4;
+        @include textClamp(3);
+    }
+    &-position {
+        font-size: 1.5rem;
+        font-weight: 300;
+        font-style: italic;
+        color: $text-color;
+    }
+    &-social {
+        @include flexbox(center, center);
+    }
+    &-social-item:not(:first-child) {
+        border-left: 1px solid $primary-color;
+    }
+    &-social-link {
+        @include flexbox(center, center);
+        @include size(6rem);
+        // display: inline-block;
+        background-color: $secondary-color;
+        color: $primary-color;
+        font-size: 2rem;
+        transition: all 0.25s linear;
+
+        &:hover {
+            color: white;
+            background-color: $primary-color;
+        }
+    }
+    @include maxWidth(1023px) {
+        padding: 5rem 0;
+        &-list {
+            @include touchSlider(55%);
+        }
+    }
+
+    @include maxWidth(1023px) {
+        &-image {
+            height: 40rem;
+        }
+        &-info {
+            height: calc(100% - 40rem);
+            // nếu k để thì nó mất cái dòng đầug tiên
+        }
+        &-list {
+            @include touchSlider(90%);
+        }
+    }
+}
+.brand {
+    padding: 8rem 0;
+    background-color: $gray-color;
+    @include maxWidth(767px) {
+        padding: 3rem 0;
+    }
+}

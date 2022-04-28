@@ -1,0 +1,20 @@
+section.work
+    .container
+        +blockBox("What we do","some of out work","Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea error dolore numquam aliquid vitae distinctio laudantium sapiente, aspernatur, similique voluptates quaerat rerum in impedit dolorem excepturi officiis animi. Non, nobis?")
+    .work-list
+        .work-column
+            +workItem("../images/img-work1.png","fa fa-cog","Frontend")
+            +workItem("../images/img-work2.png","fa fa-cog","Frontend")
+        .work-column
+            +workItem("../images/img-work3.png","fa fa-home","Frontend")
+            +workItem("../images/img-work4.png","fa fa-cog","Frontend")
+        .work-column
+            +workItem("../images/img-work5.png","fa fa-heart","super heart!","work-item--full")
+        .work-column
+            +workItem("../images/img-work5.png","fa fa-cog","Frontend")
+            .work-item
+                img.work-image(src="../images/img-work2.png")
+                .work-content
+                    i.fa.fa-home.work-icon
+                    h3.work-title Creatively Designed
+                    span.work-desc.text.text--light Lorem ipsum dolor, sit

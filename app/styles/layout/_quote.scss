@@ -1,0 +1,118 @@
+.quote {
+    padding: 6.5rem 0;
+    background-color: $gray-color;
+    &-container {
+        // @include flexbox(center, space-between);
+    // lúc đầu mình dể vầy ,,giao diện đẹp.. tuy nhiên nó có bị một vài lỗi hiện thị hình ảnh đối
+    // với tv slick slider nên ta k dùng display flex bao ngoài..,mà dùng db:block r tùy biến lại.
+    }
+    &-arrow {
+        color: $gray-dark-color;
+        cursor: pointer;
+        font-size: 3rem;
+        padding: 1rem 2rem;
+    }
+    &-item {
+        padding-left: 5.5rem;
+        padding-right: 5.5rem;
+        @include flexbox(center);
+        outline: none;
+    }
+    &-icon {
+        @include size(15rem);
+        border: 3px solid $third-color;
+        flex-shrink: 0;
+        // 0 bị thu lại  ..luôn luôn ở mức 150
+        @include flexbox(center, center);
+        margin-right: 6rem;
+    }
+    // trường hợp quote image
+    &-image{
+        @include size(22rem);
+        object-fit: cover;
+        border-radius: 100rem;
+        flex-shrink: 0;
+        // để k bị co giãn
+        margin-right: 2.5rem;
+    }
+    // &-info {
+    //     padding-left: 6rem;
+    // }
+    &-desc {
+        font-size: 2.5rem;
+        font-weight: 300;
+        line-height: 1.6;
+        font-family: $secondary-font;
+        margin-bottom: 2.5rem;
+        font-style: italic;
+        color: $text-color;
+        @include textClamp(3);
+        // thẻ p là block
+    }
+    &-author {
+        font-family: $third-font;
+        font-size: 2.5rem;
+        position: relative;
+        padding-left: 7rem;
+        &::before {
+            content: "";
+            // center theo chiều dọc.
+            @include absoluteCenter("top");
+            @include size(6rem, 4px);
+            background-color: $primary-color;
+            left: 0;
+        }
+    }
+
+
+    // slick slider
+    .slick-initialized .slick-slide {
+         display: flex; 
+    }
+    .slick-arrow{
+        // muốn đưa mũi tên ra giữa cha là relative..mà slick sinh ra rồi.
+        background-color:transparent;
+        border: 0;
+        color: $gray-dark-color;
+        cursor: pointer;
+        font-size: 3rem;
+        padding: 1rem 2rem;
+        @include absoluteCenter("top");
+        z-index: 10;
+
+    }
+    .slick-prev{
+       left: 0; 
+    }
+    .slick-next{
+       right: 0; 
+    }
+
+    @include maxWidth(767px) {
+        &-arrow {
+            display: none;
+        }
+        &-item {
+            padding: 0;
+            flex-direction: column;
+        }
+        &-icon {
+            @include size(10rem);
+            margin-right: 0;
+            img {
+                max-width: 50%;
+            }
+        }
+        &-info {
+            margin-top: 3rem;
+        }
+        &-desc {
+            display: block;
+            font-size: 1.6rem;
+            // để vô hiệu hóa cái webkit chỗ text-clamp
+        }
+        &-author {
+            font-size: 2rem;
+        }
+    }
+}

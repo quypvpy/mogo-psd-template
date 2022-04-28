@@ -1,0 +1,66 @@
+.people {
+    // top 10 trái phải 0 bottom 3rem
+    padding: 10rem 0 3rem;
+    background: linear-gradient(to bottom, rgba(white, 0.8), rgba(white, 0.8)),
+        url("https://images.unsplash.com/photo-1638791032908-d8622c83fc03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80")
+            no-repeat center/cover;
+    &-list {
+        @include flexbox(stretch, space-between, row, flex, wrap);
+        margin-top: 9rem;
+        padding: 0 4rem;
+    }
+    &-item {
+        width: calc(50% - 4rem);
+        margin-bottom: 7rem;
+        @include flexbox(flex-start);
+    }
+    &-avatar {
+        @include size(11.5rem);
+        object-fit: cover;
+        flex-shrink: 0;
+        // đẻ nó k bị co lại.
+        border-radius: 100rem;
+    }
+    &-info {
+        padding-left: 3rem;
+    }
+    &-name {
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+    }
+    &-job {
+        display: inline-block;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        color: $title-color;
+        position: relative;
+        &:after {
+            content: "";
+            @include size(6.5rem, 4px);
+            background-color: $primary-color;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+    }
+    &-desc {
+        font-style: normal;
+    }
+    @include maxWidth(1023px) {
+        padding: 5rem 0 1rem;
+        &-item {
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+    }
+    @include maxWidth(767px) {
+        &-list {
+            padding: 0;
+            margin-top: 6rem;
+        }
+        &-avatar {
+            @include size(8rem);
+        }
+    }
+}

@@ -1,0 +1,119 @@
+//- vì layout có xài mixin nên mỗi khi ctrl s file này thì nó reaload
+//- chỗ dấu = là ghi sát vô ..cách ra là nó hiện sai.
+//- nếu có caption thì mới sử dụng tên class chứ k để tên lcass rồi rỗng.
+
+mixin menuLink(title,href="#")
+	li.header-menu-item
+		a.header-menu-link(href= href)= title
+
+mixin headerBottomItem(number,title)
+	.header-bottom-item
+		span.header-bottom-number= number
+		span.header-bottom-text= title
+//- mixin ListItem(title='this is default title',caption)
+//- 	li.list-item
+//- 		h2.list-title= title
+//- 		if caption 
+//- 			span.list-caption=  caption
+//- 		if block 
+//- 		block 
+mixin blockBox(caption,title,desc)
+	.block-box
+		h3.block-box-caption= caption
+		h2.block-box-heading= title
+		if desc
+			p.block-box-desc= desc
+
+mixin aboutItem(src,title,iconClass,alt="")
+	.about-item
+		img.about-image(src= src, alt= alt)
+		.about-content
+			i.about-icon(class= iconClass)
+			span.about-title= title
+
+mixin serviceItem(src,title,desc)
+	.service-item
+		img.service-item-icon(src= src)
+		.service-item-info
+			h3.service-item-title= title
+			p.service-item-desc= desc
+
+mixin wedoItem(src,title,desc,active= "")
+	.wedo-item(class= active)
+		.wedo-item-header
+			img(src= src).wedo-item-icon
+			h3.wedo-item-title= title
+			i.fal.fa-angle-up.wedo-item-arrow
+		.wedo-item-content
+			.wedo-item-text= desc
+
+mixin teamSocial(facebook= "#",twitter= "#",pinterest= "#",instagram= "#")
+	ul.team-social
+		li.team-social-item
+			a.team-social-link(href= facebook)
+				i.fab.fa-facebook-f
+		li.team-social-item
+			a.team-social-link(href= twitter)
+				i.fab.fa-twitter
+		li.team-social-item
+			a.team-social-link(href= pinterest)
+				i.fab.fa-pinterest
+		li.team-social-item
+			a.team-social-link(href= instagram)
+				i.fab.fa-instagram
+//- nếu có block thì hiển thị block.. 
+mixin teamItem(src="../images/img-team2.png",name="Chiristopher",position="Frontend Dev")
+	.team-item
+		.team-main
+			img(src= src).team-image
+			.team-content
+				if block
+					block
+		.team-info
+			h3.team-name= name
+			span.team-position= position
+
+mixin workItem(src= "../images/img-work1.png",icon= "fa fa-home",title="Photographer super",full= "",desc= "Lorem, ipsum dolor sit")
+	.work-item(class= full)
+		img.work-image(src= src)
+		.work-content
+			i.work-icon(class= icon)
+			h3.work-title= title
+			span.work-desc.text.text--light= desc
+
+mixin peopleItem(src="https://images.unsplash.com/photo-1604882352903-019bf40ac023?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",name="Javascript",job=" Frontend Dev",desc="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus fuga voluptatum eligendi rem, quo dolor hic expedita, amet sint, libero nobis vitae nemo architecto earum dicta maxime adipisci numquam esse?")
+	li.people-item
+		img.people-avatar(src= src)
+		.people-info
+			h3.people-name= name
+			span.people-job.text.text--alight= job
+			p.people-desc.text= desc
+
+mixin storyItem(src="../images/img-blog1.png",dateNumber=15,dateText="Jan",title="Lorem ipsum, dolor sit amet consectetur adipisicing elit.",desc= "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam maxime, soluta eum magnam quisquam omnis fuga quis consequuntur laboriosam! Libero eos, dicta rerum non dolorem commodi ducimus praesentium deleniti repellat.",views=1000,comments= 100)
+	li.story-item
+		.story-media
+			img.story-image(src= src)
+			.story-date
+				span.story-date-number= dateNumber
+				span.story-date-text.text.text--light= dateText
+		h3.story-title= title
+		.story-desc.text
+			p.story-desc-inner= desc
+		.story-meta
+			.story-meta-item
+				i.fa.fa-eye.story-icon
+				span.story-meta-number.text= views
+			.story-meta-item
+				i.fa.fa-comment.story-icon
+				span.story-meta-number.text= comments
+
+mixin quoteItem(src= "../images/img-quote.png",type=false,desc= "Lorem ipsum dolorLorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus a, optio natus officia velit incidunt esse pariatur adipisci at iusto dolore, odio quo excepturi sunt facilis sint repellendus cum quibusdam?",author= "Jon Doe")
+	.quote-item
+		if type==false
+			.quote-icon
+				img(src= src)
+		else
+			img.quote-image(src= src)
+		.quote-info
+			p.quote-desc= desc
+			span.quote-author= author

@@ -1,0 +1,109 @@
+.about {
+    padding-top: 9.3rem;
+    padding-bottom: 11rem;
+    background-color: #fff;
+
+    // flex
+    // &-list {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     margin-left: -3rem;
+    // }
+    // &-item {
+    //     margin-left: 3rem;
+    //     width: calc(33.33% - 3rem);
+    // }
+
+    //  CSS grid
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 3rem;
+    }
+    &-item {
+        position: relative;
+        z-index: 1;
+        transition: all 0.25s linear;
+    }
+    &-item:hover {
+        transform: translate(-1rem, -1rem);
+        .about-content {
+            opacity: 1;
+            visibility: visible;
+        }
+        &::after {
+            transform: translate(1rem, 1rem);
+        }
+    }
+    &-item:after {
+        content: "";
+        @include absoluteFull();
+        @include bg($third-color);
+        z-index: -1;
+        transition: transform 0.25s linear;
+        // nhưng vì khi rê chuột vào mới hiện.. nên tya làm xong ta ẩn.content dưới cũng vậy
+        // transform: translate(1rem, 1rem);
+    }
+    &-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        visibility: hidden;
+        // display:none;
+        opacity: 0.6;
+        transition: all 0.25s linear;
+        background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8));
+        z-index: 2;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 2rem;
+    }
+    &-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    &-title {
+        font-weight: bold;
+        font-size: 1.8rem;
+        line-height: 1.4;
+        @include textClamp;
+        // muốn chũ ở giữa chỗ textclamp bỏ height 100%
+    }
+    @include maxWidth(767px) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        //  flexbox reposive about-list
+        // &-item {
+        //     width: 100%;
+        //     margin-bottom: 2.5rem;
+        // }
+        //  css grid reposive about-list
+        &-list {
+            grid-auto-columns: 80%;
+            grid-auto-flow: column;
+            grid-template-columns: unset;
+            grid-row-gap: 2.5rem;
+            overflow-x: auto;
+            @include hideScroll;
+            padding: 1rem;
+            // 3 cái//
+            // snap type cho th cha. x theo ngang. madary là kiểu. mỗi lần kéo qua mượt hơn chút
+            scroll-snap-type: x mandatory;
+            // lướt từng nất
+            scroll-snap-stop: always;
+        }
+        // cuối cùng thằng con
+        &-item {
+            // là tới khúc bên trái
+            scroll-snap-align: center;
+        }
+    }
+}

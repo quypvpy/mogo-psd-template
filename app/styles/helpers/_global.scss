@@ -1,0 +1,26 @@
+// glabal : toàn cầu.code những cái cơ bản ban đầu.
+a {
+    text-decoration: none;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+body {
+    font-family: $primary-font;
+    line-height: 1;
+    // font chữ bao nhiêu có chieuf cao bấy nhiêu.
+    color: $title-color;
+    font-size: 1.4rem;
+}
+// vif ddoois voiws form như input text-area thì font-famyly nó chạy theo trình duyệt chứ 
+// k phải theo body ..vì thế ta set font ở body nhưng nó cungc k dc .nên ta set riêng
+input,
+button{
+    outline: none;
+    font-family: $primary-font;
+    line-height: 1;
+}
+button{
+    cursor: pointer;
+}

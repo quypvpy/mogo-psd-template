@@ -1,0 +1,35 @@
+section.service
+    .container
+        +blockBox("We work with","Amazing Service")
+        //- vì blockbox là firsst child đầu tiên..nên k dùng dc cho -list
+        //- vì thế thêm class vô cho -list thành đầu tiên để xài.
+        .service-container
+            .service-list
+                +serviceItem("../images/img-service-icon1.png","Lorem ipsum dolor sit amet consectetur adipisicing elit.","Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloremque, adipisci")
+                +serviceItem("../images/img-service-icon2.png","Wen design","Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloremque, adipisci")
+                +serviceItem("../images/img-service-icon3.png","Creativity","Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloremque, adipisci")
+            .service-list
+                +serviceItem("../images/img-service-icon4.png","SEO","Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloremque, adipisci")
+                +serviceItem("../images/img-service-icon5.png","CSS/HTML","Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloremque, adipisci")
+                .service-item
+                    img.service-item-icon(src="../images/img-service-icon6.png")
+                    .service-item-info
+                        h3.service-item-title Digital
+                        p.service-item-desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloremque, adipisci    
+            //- c1 dùng fonosowm
+            //- .service-item
+            //-     i.fa.fa-cog.service-item-icon
+            //-     .service-item-info
+            //-         h3.service-item-title Photography
+            //-         p.service-item-desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloremque, adipisci 
+            //- .service-item
+            //-     i.fa.fa-cog.service-item-icon
+            //-     .service-item-info
+            //-         h3.service-item-title Photography
+            //-         p.service-item-desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloremque, adipisci 
+            //- .service-item
+            //-     i.fa.fa-cog.service-item-icon
+            //-     .service-item-info
+            //-         h3.service-item-title Photography
+            //-         p.service-item-desc Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus doloremque, adipisci 
+            

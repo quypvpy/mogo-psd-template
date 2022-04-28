@@ -1,0 +1,19 @@
+extends layout/layout
+//- khi ta chèn thẻ p vô cuối là con của listitem.. 
+//- thì bên mixin phải thêm if block thì hiện block
+block vars
+	-title = 'Welcome to Gulp Template workflow'
+	-bodyClass = 'home-page'
+
+block container
+	include blocks/about
+	include blocks/number
+	include blocks/service
+	include blocks/device
+	include blocks/wedo
+	include blocks/quote
+	include blocks/team
+	include blocks/work
+	include blocks/testimonial
+	include blocks/people
+	include blocks/story

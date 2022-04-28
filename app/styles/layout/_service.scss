@@ -1,0 +1,72 @@
+// tại vì nó cái cái boder( chắc do dùng border maarrgin j đó..kết hợp với border nên nó mới thấy hok đều..
+// chứ thật ra nó đẫ dãn 3 bth rồi.
+// ta thấy khoảng trống ở giữa chúng ta mong muốn là 40 2  bên 80/3=27.
+// lúc này ta k xài maginleft 4rem và -4rem nauwx. và with -2.7rem
+// bài 55  có thêm css grid mà mình k ghi,..
+.service {
+    padding: 11rem 0 12rem;
+    &-list {
+        @include flexbox(stretch, space-between);
+        // margin-left: -4rem;
+        // nó cách dưới 65 nhưng do lúc đầu heading đã 35.. đẩy nó xuống thêm 30 .k dc.
+        // vì cái đẩy lên.. cái đẩy xuống nên cái nào lớn nó đẩy.. nên 65 luôm(margin clolapse)
+        // margin-top: 3rem;
+        margin-top: 6.5rem;
+    }
+    &-list:first-child {
+        border-bottom: 1px solid $gray-dark-color;
+        margin-bottom: 5rem;
+        padding-bottom: 5rem;
+    }
+    &-list:last-child {
+        margin-top: 5rem;
+    }
+    &-item {
+        width: calc(33.33% - 2.7rem);
+        // vì chỗ text nó cách về phải 70px mà nó có margin 3rem rồi.. nên còn 4rem
+        // margin-left: 4rem;
+        @include flexbox(flex-start);
+    }
+    &-item-icon {
+        // vì width 34px nên fonze sizze là 3.4
+        font-size: 3.5rem;
+        color: $third-color;
+        margin: 0 3rem;
+    }
+    &-item-title {
+        font-weight: 500;
+        color: $title-color;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        line-height: 1.4;
+        @include textClamp(1);
+    }
+    &-item-desc {
+        color: $text-color;
+        font-weight: 300;
+        line-height: 1.6;
+        font-family: $secondary-font;
+    }
+    &-item-info {
+        // vì muốn láy withd hết phần còn lại.
+        // ta thấy icon là 3.5rem, margin 2been nữa ;à 6rem.. tổng là 9.5rem
+        width: calc(100% - 9.5rem);
+        // nếu test tieeud đề 2 dòng thì chữ k đều.. vì thế respon cần tối ưu.
+        height: 100%;
+        // cái đầu cái cuối xong từ uang ngang ta quay dọc xuống,.
+        // thì lúc nayfg nếu textClamp 2 dòng thì nó vẫn đều.
+        @include flexbox(flex-start, space-between, column);
+    }
+    @include maxWidth(1023px) {
+        padding: 5rem 0;
+        &-list {
+            display: block;
+        }
+        &-item {
+            width: 100%;
+        }
+        &-item:not(:last-child) {
+            margin-bottom: 3rem;
+        }
+    }
+}
